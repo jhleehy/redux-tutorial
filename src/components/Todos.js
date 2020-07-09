@@ -3,9 +3,13 @@ import React from 'react';
 const TodoItem = ({ todo, onToggle, onRemove }) => {
   return (
     <div>
-        <input type="checkbox"></input>
-        <span> Example Text </span>
-        <button> Delete</button>
+        <input type="checkbox" 
+              onClick={ () => onToggle(todo.id)}
+              checked = {todo.done}
+              readOnly={true}
+              />
+        <span> {todo} </span>
+        <button>  Delete</button>
     </div>
   );
 };
@@ -21,19 +25,28 @@ const Todos = ({
 }) => {
     const onSubmit = e => {
         e.preventDefault();
+        onInsert(input);
+        onChangeInput('');
     }
+
+    const onChange = (e) => {
+      onChangeInput(e.target.value);
+    };
 
     return (
       <div>
-        <form onSubmit={onsubmit}>
-          <input />
+        <form onSubmit={onSubmit}>
+          <input value={input} onChange={onChange} />
           <button type="submit">Enroll</button>
         </form>
         <div>
-          <TodoItem></TodoItem>
-          <TodoItem></TodoItem>
-          <TodoItem></TodoItem>
-          <TodoItem></TodoItem>
+          {todos.map((item) => (
+            <TodoItem
+              key={item.id}
+              todo={item.text}
+              onToggle={onToggle}
+            ></TodoItem>
+          ))}
         </div>
       </div>
     );

@@ -36,12 +36,12 @@ const initialState = {
   todos: [
     {
       id: 1,
-      text: "리덕스 기초 배우기",
+      text: "redux tutorial",
       done: true,
     },
     {
       id: 2,
-      text: "리액트와 리덕스 사용하기",
+      text: "redux tutorial2",
       done: false,
     },
   ],

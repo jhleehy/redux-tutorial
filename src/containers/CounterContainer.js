@@ -20,18 +20,30 @@ const mapStateToProps = state => ({
 });
 
 //2) Reducer에 action을 알리는 함수 dispatch를 어떻게 props에 엮을 지 정한다
-const mapDispatchToProps = dispatch => ({
-    increase : () => {
-        dispatch(increase());
-        // return dispatch(increase());  //같음
-    },
-    decrease : () => {
-        dispatch(decrease());
-    }
-})
+// const mapDispatchToProps = dispatch => ({
+//     increase : () => {
+//         dispatch(increase());
+//         // return dispatch(increase());  //같음
+//     },
+//     decrease : () => {
+//         dispatch(decrease());
+//     }
+// })
 
 //3) 위에 두가지가 적용된 props를 받을 Component를 정한다
 export default connect(
     mapStateToProps,
-    mapDispatchToProps, 
+    //mapDispatchToProps, 
+    // dispatch => 
+    //     bindActionCreators(
+    //         { 
+    //             increase,
+    //             decrease,
+    //         },
+    //         dispatch
+    //     )
+    {
+        increase,
+        decrease
+    }
 )(CounterContainer); 
